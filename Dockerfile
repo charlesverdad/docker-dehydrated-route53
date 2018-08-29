@@ -3,7 +3,6 @@ FROM ubuntu:xenial AS builder
 RUN apt-get update && apt-get install -y \
     git \
     wget \
-    jq \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /dehydrated
@@ -47,9 +46,7 @@ WORKDIR /dehydrated
 COPY --from=builder /dehydrated /dehydrated
 COPY --from=builder /usr/local/bin /usr/local/bin
 
-
 COPY config.tmpl config.tmpl
-RUN ls
 COPY entrypoint.sh /entrypoint.sh
 
 VOLUME /dehydrated/certs
