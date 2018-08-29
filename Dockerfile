@@ -48,6 +48,7 @@ COPY --from=builder /usr/local/bin /usr/local/bin
 
 COPY config.tmpl config.tmpl
 COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
 
 VOLUME /dehydrated/certs
 VOLUME /dehydrated/accounts
